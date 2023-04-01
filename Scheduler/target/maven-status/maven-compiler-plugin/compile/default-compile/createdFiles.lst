@@ -1,2 +1,6 @@
+model/StoreModel.class
 Main.class
+System/Picker.class
+model/OrderModel.class
 Main$1.class
+System/OrderProcessed.class

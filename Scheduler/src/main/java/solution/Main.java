@@ -1,9 +1,11 @@
+package solution;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.OrderModel;
-import System.OrderProcessed;
-import System.Picker;
-import model.StoreModel;
+import solution.model.OrderModel;
+import solution.System.OrderProcessed;
+import solution.System.Picker;
+import solution.model.StoreModel;
 
 import java.io.File;
 import java.util.*;
@@ -38,7 +40,9 @@ public class Main {
         for (String picker : store.getPickers()) {
             Picker pickerer = new Picker(picker, store.getPickingStartTime(), store.getPickingEndTime());
             pickers.add(pickerer);
+            System.out.println(pickerer);
         }
+
 
         pickers.forEach(System.out::println);
 
@@ -59,6 +63,7 @@ public class Main {
 
                     if (currentPicker.canWorkDuringHours(orders.peek().getStartTime(), orders.peek().getCompleteBy(), orders.peek().getPickingTime())) {
                         System.out.println("Poprzednie wolne godziny pracy pickera o id: " + currentPicker.getID() + " wynosiły : " + currentPicker.getStartsWorking() + " - " + currentPicker.getEndsWorking());
+                        currentPicker.updateBusyTime(orders.peek().getPickingTime());
                         System.out.println("godziny pakowania: " + orders.peek().getCompleteBy().minus(orders.peek().getPickingTime()) + " do " + orders.peek().getCompleteBy());
                         processedOrders.add(new OrderProcessed(orders.peek().getOrderId(), currentPicker.getID(), orders.poll().getStartTime()));
                         System.out.println("Nowe wolne godziny pracy pickera o id: " + currentPicker.getID() + " wynosiły : " + currentPicker.getStartsWorking() + " - " + currentPicker.getEndsWorking());
@@ -71,6 +76,7 @@ public class Main {
 
             }
 
+        }
 
             System.out.println("Wyniki: ");
             System.out.println();
@@ -85,7 +91,7 @@ public class Main {
                     )));
 
 
-        }
+
 
 
     }
