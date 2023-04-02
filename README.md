@@ -30,7 +30,7 @@ arg2 object required fileds:
 Result of program work is written to standard output and shows prepared schedule for pickers that will maximize numbers of orders that will be processed
 
 example: P1 order-1 09:00
-P1 -> pickers ID
-order-1 -> orderID
-09:00 -> start picking time prepared for that picker
+P1 - pickers ID
+order-1 - orderID
+09:00 - start picking time prepared for that picker
 
