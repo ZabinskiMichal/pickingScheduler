@@ -31,7 +31,7 @@ Result of program work is written to standard output and shows prepared schedule
 
 example of output: P1 order-1 09:00
 
-description: 
+description: <br />
 P1 - pickers ID <br />
 order-1 - orderID <br />
 09:00 - start picking time prepared for that picker
