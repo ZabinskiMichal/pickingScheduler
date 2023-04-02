@@ -22,23 +22,18 @@ public class Main {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
 
-//        String storeSourceFilePath = "/Users/michalzabinski/Desktop/zadanie-java/self-test-data/optimize-order-count/store.json";
-//        String ordersSourceFilePath = "/Users/michalzabinski/Desktop/zadanie-java/self-test-data/optimize-order-count/orders.json";
-
-
         String storeSourceFilePath = args[0];
         String ordersSourceFilePath = args[1];
 
         StoreModel store = objectMapper.readValue(new File(storeSourceFilePath), StoreModel.class);
-        List<OrderModel> ordersList = objectMapper.readValue(new File(ordersSourceFilePath), new TypeReference<List<OrderModel>>() {});
+        List<OrderModel> ordersList = objectMapper.readValue(new File(ordersSourceFilePath), new TypeReference<List<OrderModel>>() {
+        });
 
         int ordersAmount = ordersList.size();
 
 
-//        ordersList.sort(Comparator.comparing(OrderModel::getPickingTime));
         ordersList.sort(Comparator.comparing(OrderModel::getStartTime));
-        Queue<OrderModel> ordersQueue =  new LinkedList<>(ordersList);
-
+        Queue<OrderModel> ordersQueue = new LinkedList<>(ordersList);
 
 
         List<Picker> pickers = new ArrayList<>();

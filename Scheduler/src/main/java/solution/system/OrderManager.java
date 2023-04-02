@@ -33,7 +33,6 @@ public class OrderManager {
                 for (Picker picker : pickers){
 //                checking if picker is able to take order that will take @Param time
                     if(picker.canPickOrderThatWillTake(orders.peek().getPickingTime())){
-                        System.out.println("Picker id: " + picker.getID() + " starts work: " + picker.getStartsWorking() + " ends work: " + picker.getEndsWorking());
 
 //                        checks if order will be processed before deadline
                         if(orders.peek().checkIfWillNotExceedDeadLine(picker.getStartsWorking())){
@@ -45,8 +44,6 @@ public class OrderManager {
                             picker.updateBusyTime(orders.peek().getPickingTime());
                             orders.poll();
                         }else {
-                            System.out.println(" one: Picker o id " + picker.getID() + " nie jest w stanie przetworzyc tego zamowienia poniewaz zaczyna prace o " + picker.getStartsWorking() + ", konczy o " + picker.getEndsWorking() +
-                                    " a zadanie zaierze mu " + orders.peek().getPickingTime() + " oraz musi byc skonczone przed: " + orders.peek().getCompleteBy());
                             numberOfTries++;
                             if(numberOfTries >= pickers.size()){
                                 toContinue = false;
@@ -55,8 +52,6 @@ public class OrderManager {
 
 
                     }else {
-                        System.out.println("two : Picker o id " + picker.getID() + " nie jest w stanie przetworzyc zamowienia o ID: " + orders.peek().getOrderId() + " poniewaz zaczyna prace o " + picker.getStartsWorking() + ", konczy o " + picker.getEndsWorking() +
-                                " a zadanie zaierze mu " + orders.peek().getPickingTime() + " oraz musi byc skonczone przed: " + orders.peek().getCompleteBy());
                         picker.incremtntNumberOfTries();
 
                         if(picker.getNumberOfTries() > ordersAmount){
@@ -93,7 +88,6 @@ public class OrderManager {
                 continue;
             }
             freePickersLeft = false;
-            System.out.println("No free pickers left");
         }
         return freePickersLeft;
     }
