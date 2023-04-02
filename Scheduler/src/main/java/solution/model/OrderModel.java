@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalTime;
 
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -21,11 +20,13 @@ public class OrderModel {
     private Duration pickingTime;
     private LocalTime completeBy;
 
-
-
     public LocalTime getStartTime(){
         return this.completeBy.minus(this.pickingTime);
     }
 
+
+    public boolean checkIfWillNotExceedDeadLine(LocalTime pickingStartTime){
+        return !pickingStartTime.plus(pickingTime).isAfter(completeBy);
+    }
 
 }
