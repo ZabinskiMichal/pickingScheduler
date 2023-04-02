@@ -1,6 +1,6 @@
 # picking scheduler
 
-Application created to automate and optimize schedule for picking grocery harmonogram in shops.
+Application created to automate and optimize schedule for picking grocery in shops.
 
 ## how to use this program
 1) clone this repository
