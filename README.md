@@ -5,7 +5,7 @@ Application created to automate and optimize schedule for picking grocery in sho
 ## how to use this program
 1) clone this repository
 2) using terminal, navigate to /Scheduler/target
-3) type: java -jar Scheduler-1.0-SNAPSHOT-jar-with-dependencies.jar {arg1} {arg2}
+3) type: > java -jar Scheduler-1.0-SNAPSHOT-jar-with-dependencies.jar {arg1} {arg2}
 
 ## run arguments:
 arg1 - .json file containing shop configuraion with all pickers and start/stop picking hours
